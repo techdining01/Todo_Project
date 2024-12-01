@@ -1,15 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <ul>
-        <li>Life</li>
-        <li>Grave</li>
-        <li>Resurrection</li>
-    </ul>
-</body>
-</html>
+{% extends '_partials/base.html' %}
+
+
+    {% block content %}
+        <h1 class="ui header">My List of Todos</h1>
+        {% if todos %}
+        <table class="ui table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Completed</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for todo in todos %}
+                <tr>
+                    <td>{{todo.title}}</td>
+                    <td>{{todo.description}}</td>
+                    <td>{{todo.is_completed}}</td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <div class="ui message">
+                <div ui header>
+                    No item yet
+                </div>
+                <p> You can create one <a href={% url 'create-todo' %}>here</a></p>
+            </div>
+        {% endif %}
+    {% endblock %}

@@ -1,0 +1,15 @@
+{% extends '_partials/base.html' %}
+
+
+
+{% block content %}
+    <form class='ui form' action="{% url 'create-todo' %}" method="POST">
+        
+        {% csrf_token %}
+        {{form.as_p}}
+
+    <input type="submit" value="Submit" class="ui button primary">
+
+    </form>
+    
+{% endblock %}
