@@ -1,8 +1,17 @@
 {% extends '_partials/base.html' %}
 
+{% block title %}
 
+    Create Todo
 
-{% block content %}
+{% endblock %}
+
+{% include '_partials/messages.html' %}
+
+{% block content %} 
+
+      {% include '_partials/messages.html' %}
+      
     <form class='ui form' action="{% url 'create-todo' %}" method="POST">
         
         {% csrf_token %}

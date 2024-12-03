@@ -1,8 +1,14 @@
 {% extends '_partials/base.html' %}
+ {% block title %} Home {% endblock %}
+  {% include '_partials/messages.html' %}
 
 
     {% block content %}
+    
         <h1 class="ui header">My List of Todos</h1>
+
+        {% include '_partials/messages.html' %}
+
         {% if todos %}
         <table class="ui table">
             <thead>
@@ -18,11 +24,40 @@
                 <tr>
                     <td>{{todo.title}}</td>
                     <td>{{todo.description}}</td>
-                    <td>{{todo.is_completed}}</td>
-                    <td></td>
+                    <td>
+                    
+                        {% if todo.is_completed %}
+                        YES <i class="check icon green"></i>
+                        {% else %}
+                        NO <i class="cross icon red"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+
+                        <a href={% url 'todo-detail' todo.id %} class="ui button purple">
+                        <i>More</i>
+                        </a>
+                        <a href={% url 'update-todo' todo.id %} class="ui button green">
+                        <i>Edit</i>
+                        </a>
+
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
+            <tfoot>
+                <tr>
+                    <th>
+                        <a href="?filter=all">All {{total}}</a>
+                    </th>
+                    <th>
+                        <a href="?filter=incomplete">{{incompleted}} Not Completed</a>
+                    </th>
+                    <th>
+                        <a href="?filter=completed">{{completed}} Completed</a>
+                    </th>
+                </tr>
+            </tfoot>
         </table>
         {% else %}
             <div class="ui message">

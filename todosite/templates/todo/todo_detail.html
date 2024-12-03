@@ -1,8 +1,32 @@
 {% extends '_partials/base.html' %}
+ {% block title %} Todo Details {% endblock %}
 
 
     {% block content %}
-    
-    <h3>form details</h3>
+    <h2 class="ui header"> Todo Detail</h2>
+    <div class="card">
+        <div class="card header">
+            <div class='meta'>
+                <p>Created at {{todo.created_at}}</p> 
+            </div>    
+                <div class="card title">
+                    <p>Title: {{todo.title}}</p>
+                </div>
+        </div>
+        <div class="card content">
+            <p>Description: {{todo.description}}</p>
+        </div>
+
+        <div class="card extra content">
+            {% if todo.is_completed %}
+                <p><i class="check green">
+                Completed at {{todo.updated_at}}</i></p>
+            {% else %}
+                <p>Not Completed</p>
+            {%endif%}
+        </div>
+        <a href={% url 'update-todo' todo.id %} class="ui button primary"> Edit</a>
+        <a href={% url 'delete-todo' todo.id %} class="ui button red"> Delete</a>
+    </div>
     
     {% endblock %}

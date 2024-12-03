@@ -22,3 +22,7 @@ urlpatterns = [
     path('authentication/', include('authentication.urls')),
     path('admin/', admin.site.urls),
 ]
+
+
+handler404="tracker.views.page_not_found"
+handler500="tracker.views.server_error"
