@@ -19,7 +19,7 @@
             {% csrf_token %}
             <p>Are you sure to delete? </p>
             <input type="submit" value="Yes" class="ui button negative">
-            <a href={% url 'todo-detail' todo.pk %} class="ui button grey">Cancel</a>
+            <a href={% url 'home' %} class="ui button grey">Cancel</a>
 
         </form>
     </div>

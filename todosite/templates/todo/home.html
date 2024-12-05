@@ -64,7 +64,12 @@
                 <div ui header>
                     No item yet
                 </div>
-                <p> You can create one <a href={% url 'create-todo' %}>here</a></p>
+                <p> You can create one 
+                {% if request.user.is_authenticated %}
+                <a href={% url 'create-todo' %}>here</a></p>
+                {% else  %}
+                <a href={% url 'login' %}>Login in first</a>
+                {% endif %}
             </div>
         {% endif %}
     {% endblock %}

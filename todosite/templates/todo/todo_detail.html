@@ -1,9 +1,14 @@
 {% extends '_partials/base.html' %}
- {% block title %} Todo Details {% endblock %}
+
+ {% block title %} Todo Detail {% endblock %}
+
 
 
     {% block content %}
-    <h2 class="ui header"> Todo Detail</h2>
+
+    {% include '_partials/messages.html' %}
+
+    <h2 class="ui header"> Todo Detail </h2>
     <div class="card">
         <div class="card header">
             <div class='meta'>
@@ -13,6 +18,7 @@
                     <p>Title: {{todo.title}}</p>
                 </div>
         </div>
+    </div>
         <div class="card content">
             <p>Description: {{todo.description}}</p>
         </div>
@@ -25,8 +31,11 @@
                 <p>Not Completed</p>
             {%endif%}
         </div>
+
+        
         <a href={% url 'update-todo' todo.id %} class="ui button primary"> Edit</a>
         <a href={% url 'delete-todo' todo.id %} class="ui button red"> Delete</a>
-    </div>
+    
+    
     
     {% endblock %}

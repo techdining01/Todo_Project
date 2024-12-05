@@ -6,13 +6,15 @@
       <img class="logo" class="logo" src= {% static 'img/Logo.png' %} />
     </a>
 
+
+
     <div class="right item">
-      <a href="{% url 'create-todo' %}" class="ui primary button">Create Todo</a>
     {% if request.user.is_authenticated %}  
-      <div class="ui simple dropdown item">
-        {{request.user.username}}<i class="dropdown icon"> </i>
+      <a href="{% url 'create-todo' %}" class="ui primary button">Create Todo</a>
+      <div class="ui simple dropdown item"> <h5> Welcome
+        {{request.user.username}}</h3> <i class="dropdown icon"> </i>
         <div class="menu">
-        <form class="ui large form" method="post" action="#">
+        <form class="ui large form" method="post" action={% url 'logout_user' %}>
 
           {% csrf_token %}
          <input class="ui button"
@@ -27,6 +29,9 @@
       <a href="{% url 'login' %}" class="ui primary button">Login</a>
       </div>
       
+
+
+
       <div class="ui item">
       <a href="{% url 'register' %}" class="ui primary button">Register</a>
       </div>
